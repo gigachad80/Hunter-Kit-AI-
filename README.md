@@ -7,12 +7,12 @@
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-pink.svg)
 <a href="https://github.com/gigachad80/grep-backURLs/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
 
-#### grep-backURLs : 
+#### Hunter Kit AI : 
 
 ### 📌 Overview
 
 
- *_grep-backURLs_* is a web security automation tool to extracts important credentials in bug hunting. It uses subfinder to find subdomains and then those subdomain acts as input links for waybackurls . After that , it uses grep command and keywords.txt to sort out important credentials.
+ *_Hunter Kit AI s_* is a web security automation tool to extracts important credentials in bug hunting. It uses subfinder to find subdomains and then those subdomain acts as input links for waybackurls . After that , it uses grep command and keywords.txt to sort out important credentials.
 
 ### 🤔 Why This Name?
 
