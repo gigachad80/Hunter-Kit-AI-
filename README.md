@@ -42,6 +42,9 @@ All the tools I have selected are commonly used by web app pentesters, so you ca
 git clone https://github.com/gigachad80/Hunter Kit AI
 ```
 
+```
+Go to .env file & set your .env credentials from Google AI studio
+```
 
 ```
 python 3 hunter-kit-ai.py
@@ -72,7 +75,8 @@ python hunter-kit-ai.py
 
 ### 📝 Roadmap / To-do 
 
-- [x] Release GPT ,Mistral , Deepseek , Grok , Claude model & ollama support
+- [ ] Release GPT ,Mistral , Deepseek , Grok , Claude model & ollama support
+- [ ] Support for Latest Google Gen AI AI SDK  
 
 
 
