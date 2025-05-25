@@ -39,7 +39,7 @@ All the tools I have selected are commonly used by web app pentesters, so you ca
 - Just copy paste these commands .
 
 ```
-git clone https://github.com/gigachad80/Hunter Kit AI
+git clone https://github.com/gigachad80/Hunter-Kit- AI-
 ```
 
 ```
