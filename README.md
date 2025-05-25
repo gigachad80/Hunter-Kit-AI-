@@ -75,7 +75,7 @@ python hunter-kit-ai.py
 
 ### 📝 Roadmap / To-do 
 
-- [ ] Release GPT ,Mistral , Deepseek , Grok , Claude model & ollama support
+- [ ] Release GPT ,Mistral , Deepseek , Grok , Claude models & ollama support
 - [ ] Support for Latest Google Gen AI AI SDK  
 
 
@@ -84,7 +84,7 @@ python hunter-kit-ai.py
 
 
 * #### [@tomnomnom](https://github.com/tomnomnom) for developing waybackurls
-* ####  [@project discovery](https://github.com/projectdiscovery)for creating subfinder.
+* ####  [@project discovery](https://github.com/projectdiscovery)for creating subfinder , dnsx, naabu
 
 
 
