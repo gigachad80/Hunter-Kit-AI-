@@ -1,0 +1,97 @@
+sage: waymore [-h] [-i INPUT] [-n] [-mode {U,R,B}] [-oU OUTPUT_URLS] [-oR OUTPUT_RESPONSES] [-f] [-fc FC] [-ft FT] [-mc MC] [-mt MT] [-l <signed integer>] [-from <yyyyMMddhhmmss>]
+               [-to <yyyyMMddhhmmss>] [-ci {h,d,m,none}] [-ra REGEX_AFTER] [-url-filename] [-xwm] [-xcc] [-xav] [-xus] [-xvt] [-xix]
+               [--providers {wayback,commoncrawl,otx,urlscan,virustotal,intelx}] [-lcc LCC] [-lcy LCY] [-t <seconds>] [-p <integer>] [-r RETRIES] [-m <integer>] [-ko [KEYWORDS_ONLY]]
+               [-lr LIMIT_REQUESTS] [-ow] [-nlf] [-c CONFIG] [-wrlr WAYBACK_RATE_LIMIT_RETRY] [-urlr URLSCAN_RATE_LIMIT_RETRY] [-co] [-nd] [-oijs] [-v] [--version]
+
+waymore - by @Xnl-h4ck3r: Find way more from the Wayback Machine
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        The target domain (or file of domains) to find links for. This can be a domain only, or a domain with a specific path. If it is a domain only to get everything for
+                        that domain, don't prefix with "www."
+  -n, --no-subs         Don't include subdomains of the target domain (only used if input is not a domain with a specific path).
+  -mode {U,R,B}         The mode to run: U (retrieve URLs only), R (download Responses only) or B (Both).
+  -oU OUTPUT_URLS, --output-urls OUTPUT_URLS
+                        The file to save the Links output to, including path if necessary. If the "-oR" argument is not passed, a "results" directory will be created in the path specified
+                        by the DEFAULT_OUTPUT_DIR key in config.yml file (typically defaults to "~/.config/waymore/"). Within that, a directory will be created with target domain (or
+                        domain with path) passed with "-i" (or for each line of a file passed with "-i").
+  -oR OUTPUT_RESPONSES, --output-responses OUTPUT_RESPONSES
+                        The directory to save the response output files to, including path if necessary. If the argument is not passed, a "results" directory will be created in the path
+                        specified by the DEFAULT_OUTPUT_DIR key in config.yml file (typically defaults to "~/.config/waymore/"). Within that, a directory will be created with target domain
+                        (or domain with path) passed with "-i" (or for each line of a file passed with "-i").
+  -f, --filter-responses-only
+                        The initial links from Wayback Machine will not be filtered (MIME Type and Response Code), only the responses that are downloaded, e.g. it maybe useful to still see
+                        all available paths from the links even if you don't want to check the content.
+  -fc FC                Filter HTTP status codes for retrieved URLs and responses. Comma separated list of codes (default: the FILTER_CODE values from config.yml). Passing this argument
+                        will override the value from config.yml
+  -ft FT                Filter MIME Types for retrieved URLs and responses. Comma separated list of MIME Types (default: the FILTER_MIME values from config.yml). Passing this argument will
+                        override the value from config.yml. NOTE: This will NOT be applied to Alien Vault OTX, Virus Total and Intelligence X because they don't have the ability to filter
+                        on MIME Type. Sometimes URLScan does not have a MIME Type defined - these will always be included. Consider excluding sources if this matters to you.
+  -mc MC                Only Match HTTP status codes for retrieved URLs and responses. Comma separated list of codes. Passing this argument overrides the config FILTER_CODE and -fc.
+  -mt MT                Only MIME Types for retrieved URLs and responses. Comma separated list of MIME types. Passing this argument overrides the config FILTER_MIME and -ft. NOTE: This
+                        will NOT be applied to Alien Vault OTX, Virus Total and Intelligence X because they don't have the ability to filter on MIME Type. Sometimes URLScan does not have a
+                        MIME Type defined - these will always be included. Consider excluding sources if this matters to you.
+  -l <signed integer>, --limit <signed integer>
+                        How many responses will be saved (if -mode is R or B). A positive value will get the first N results, a negative value will will get the last N results. A value of
+                        0 will get ALL responses (default: 5000)
+  -from <yyyyMMddhhmmss>, --from-date <yyyyMMddhhmmss>
+                        What date to get responses from. If not specified it will get from the earliest possible results. A partial value can be passed, e.g. 2016, 201805, etc.
+  -to <yyyyMMddhhmmss>, --to-date <yyyyMMddhhmmss>
+                        What date to get responses to. If not specified it will get to the latest possible results. A partial value can be passed, e.g. 2016, 201805, etc.
+  -ci {h,d,m,none}, --capture-interval {h,d,m,none}
+                        Filters the search on Wayback Machine (archive.org) to only get at most 1 capture per hour (h), day (d) or month (m). This filter is used for responses only. The
+                        default is 'd' but can also be set to 'none' to not filter anything and get all responses.
+  -ra REGEX_AFTER, --regex-after REGEX_AFTER
+                        RegEx for filtering purposes against links found all sources of URLs AND responses downloaded. Only positive matches will be output.
+  -url-filename         Set the file name of downloaded responses to the URL that generated the response, otherwise it will be set to the hash value of the response. Using the hash value
+                        means multiple URLs that generated the same response will only result in one file being saved for that response.
+  -xwm                  Exclude checks for links from Wayback Machine (archive.org)
+  -xcc                  Exclude checks for links from commoncrawl.org
+  -xav                  Exclude checks for links from alienvault.com
+  -xus                  Exclude checks for links from urlscan.io
+  -xvt                  Exclude checks for links from virustotal.com
+  -xix                  Exclude checks for links from intelx.io
+  --providers {wayback,commoncrawl,otx,urlscan,virustotal,intelx}
+                        A comma separated list of source providers that you want to get URLs from. The values can be wayback,commoncrawl,otx,urlscan,virustotal and intelx. Passing this
+                        will override any exclude arguments (e.g. -xwm,-xcc, etc.) passed to exclude sources, and reset those based on what was passed with this argument.
+  -lcc LCC              Limit the number of Common Crawl index collections searched, e.g. '-lcc 10' will just search the latest 10 collections (default: 1). As of November 2024 there are
+                        currently 106 collections. Setting to 0 (default) will search ALL collections. If you don't want to search Common Crawl at all, use the -xcc option.
+  -lcy LCY              Limit the number of Common Crawl index collections searched by the year of the index data. The earliest index has data from 2008. Setting to 0 (default) will search
+                        collections or any year (but in conjuction with -lcc). For example, if you are only interested in data from 2015 and after, pass -lcy 2015. If you don't want to
+                        search Common Crawl at all, use the -xcc option.
+  -t <seconds>, --timeout <seconds>
+                        This is for archived responses only! How many seconds to wait for the server to send data before giving up (default: 30 seconds)
+  -p <integer>, --processes <integer>
+                        Basic multithreading is done when getting requests for a file of URLs. This argument determines the number of processes (threads) used (default: 1)
+  -r RETRIES, --retries RETRIES
+                        The number of retries for requests that get connection error or rate limited (default: 1).
+  -m <integer>, --memory-threshold <integer>
+                        The memory threshold percentage. If the machines memory goes above the threshold, the program will be stopped and ended gracefully before running out of memory
+                        (default: 95)
+  -ko [KEYWORDS_ONLY], --keywords-only [KEYWORDS_ONLY]
+                        Only return links and responses that contain keywords that you are interested in. This can reduce the time it takes to get results. If you provide the flag with no
+                        value, Keywords are taken from the comma separated list in the "config.yml" file with the "FILTER_KEYWORDS" key, otherwise you can pass an specific Regex value to
+                        use, e.g. -ko "admin" to only get links containing the word admin, or -ko "\.js(\?|$)" to only get JS files. The Regex check is NOT case sensitive.
+  -lr LIMIT_REQUESTS, --limit-requests LIMIT_REQUESTS
+                        Limit the number of requests that will be made when getting links from a source (this doesn't apply to Common Crawl). Some targets can return a huge amount of
+                        requests needed that are just not feasible to get, so this can be used to manage that situation. This defaults to 0 (Zero) which means there is no limit.
+  -ow, --output-overwrite
+                        If the URL output file (default waymore.txt) already exists, it will be overwritten instead of being appended to.
+  -nlf, --new-links-file
+                        If this argument is passed, a .new file will also be written that will contain links for the latest run. This is only relevant for mode U.
+  -c CONFIG, --config CONFIG
+                        Path to the YML config file. If not passed, it looks for file 'config.yml' in the same directory as runtime file 'waymore.py'.
+  -wrlr WAYBACK_RATE_LIMIT_RETRY, --wayback-rate-limit-retry WAYBACK_RATE_LIMIT_RETRY
+                        The number of minutes the user wants to wait for a rate limit pause on Watback Machine (archive.org) instead of stopping with a 429 error (default: 3).
+  -urlr URLSCAN_RATE_LIMIT_RETRY, --urlscan-rate-limit-retry URLSCAN_RATE_LIMIT_RETRY
+                        The number of minutes the user wants to wait for a rate limit pause on URLScan.io instead of stopping with a 429 error (default: 1).
+  -co, --check-only     This will make a few minimal requests to show you how many requests, and roughly how long it could take, to get URLs from the sources and downloaded responses from
+                        Wayback Machine (unfortunately it isn't possible to check how long it will take to download responses from URLScan).
+  -nd, --notify-discord
+                        Whether to send a notification to Discord when waymore completes. It requires WEBHOOK_DISCORD to be provided in the config.yml file.
+  -oijs, --output-inline-js
+                        Whether to save combined inline javascript of all relevant files in the response directory when "-mode R" (or "-mode B") has been used. The files are saved with the
+                        name "combined_inline{}.js" where "{}" is the number of the file, saving 1000 unique scripts per file.
+  -v, --verbose         Verbose output
+  --version             Show version number

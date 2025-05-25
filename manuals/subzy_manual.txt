@@ -1,0 +1,15 @@
+$ subzy --help
+Subdomain takeover tool
+
+Usage:
+  subzy [command]
+
+Available Commands:
+  help        Help about any command
+  run         Run subzy
+  version     Print subzy version
+
+Flags:
+  -h, --help   help for subzy
+
+Use "subzy [command] --help" for more information about a command.
