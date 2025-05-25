@@ -83,8 +83,8 @@ python hunter-kit-ai.py
 ### 💓 Credits:
 
 
-* #### [@tomnomnom](https://github.com/tomnomnom) for developing waybackurls
-* ####  [@project discovery](https://github.com/projectdiscovery)for creating subfinder , dnsx, naabu
+* #### [@tomnomnom](https://github.com/tomnomnom) for developing waybackurls, httprobe
+* ####  [@project discovery](https://github.com/projectdiscovery)for creating subfinder , dnsx, naabu, httpx toolkit, shuffledns
 
 
 
