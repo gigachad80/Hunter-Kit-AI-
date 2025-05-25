@@ -12,7 +12,7 @@
 ### 📌 Overview
 
 
- *_Hunter Kit AI_* is an AI powered web security tool which uses AI to generate syntax for 30+ bug hunting tools .Not only it generate syntax but you can also ask question related to output of generated command. Apart from that it & also support integration for custom tools and custom prompt. 
+ *_Hunter Kit AI_* is an AI powered web security tool which uses AI to generate syntax for 30+ bug hunting tools .Not only it generate syntax but you can also ask question related to output and other queries of generated command. Apart from that it & also support integration for custom tools and custom prompt. 
 
 ### 🤔 Why This Name?
 
