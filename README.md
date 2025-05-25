@@ -19,7 +19,7 @@
 All the tools I have selected are commonly used by web app pentesters, so you can consider it a toolkit for bug hunters. Since it uses AI for command generation and answering questions, I named it 'Hunter Kit AI' .  
 
 
-### ⌚ Total Time taken to develop , test & prompt modification 
+### ⌚ Total Time taken to develop , test , trying different approaches & prompt modification 
 
  Approx 11 hr 26 min 3 sec 
 
