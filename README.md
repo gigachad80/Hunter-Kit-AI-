@@ -41,6 +41,13 @@ All the tools I have selected are commonly used by web app pentesters, so you ca
 ```
 git clone https://github.com/gigachad80/Hunter-Kit-AI-
 ```
+```
+pip install -r requirements.txt
+```
+OR 
+```
+pipx install -r requirements.txt
+```
 
 ```
 Go to .env file & set your .env credentials from Google AI studio
