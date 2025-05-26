@@ -65,7 +65,7 @@ python hunter-kit-ai.py
 - Then choose the module and tools as you want
 
 > [!NOTE] 
-> For Customisation : edit config.py prompt , or you can use config generator.py to generate custom prompts. For integrating your own custom tools and how to edit config.py , read this [Documentation]() ( will write Docs later )
+> For Customisation : edit config.py prompt , or you can use config generator.py to generate custom prompts. For integrating your own custom tools and how to edit config.py , read this [Documentation](https://github.com/gigachad80/Hunter-Kit-AI-/wiki/Custom-Tool-Integration-&-Custom-Prompt-Support) ( in progress )
 
 ### 💫 Features  : 
 
